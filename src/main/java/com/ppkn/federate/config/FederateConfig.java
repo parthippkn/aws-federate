@@ -25,7 +25,8 @@ public class FederateConfig {
     private final ArgsResolverConfig argsResolverConfig;
     private final KeystoreHandler keystoreHandler;
     private Map<String, CognitoPool> roles = new HashMap();
-    private String region, env;
+    private String region, env, issuer;
+    private Map<String, String> keystore = new HashMap<>();
 
     @Data
     public static class CognitoPool {

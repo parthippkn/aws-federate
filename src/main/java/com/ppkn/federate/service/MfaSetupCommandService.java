@@ -19,7 +19,7 @@ public class MfaSetupCommandService implements CommandService {
 
     private final FederateConfig federateConfig;
     private static final String QRCODE_TEMPLATE_URL = "https://www.google.com/chart?chs=200x200&chld=M|0&cht=qr&chl=" +
-        "otpauth://totp/Opptygo:role:uName?secret=secretKey&issuer=Opptygo";
+        "otpauth://totp/orgIssuer:role:uName?secret=secretKey&issuer=orgIssuer";
 
     @Override
     public CommandServiceResponse execute(CommandServiceRequest request) {
@@ -44,6 +44,7 @@ public class MfaSetupCommandService implements CommandService {
 
         AssociateSoftwareTokenResult tokenResult =  cognitoClient.associateSoftwareToken(tokenRequest);
         String qrCodeUrl = QRCODE_TEMPLATE_URL.replaceAll("secretKey", tokenResult.getSecretCode());
+        qrCodeUrl = QRCODE_TEMPLATE_URL.replaceAll("orgIssuer", federateConfig.getIssuer());
         qrCodeUrl = qrCodeUrl.replaceAll("uName", federateConfig.getArgsResolverConfig().getUserName());
         qrCodeUrl = qrCodeUrl.replaceAll("role", federateConfig.getArgsResolverConfig().getRoleName());
         log.info("Click this QRCODE in the browser   : \n {}\n", qrCodeUrl);

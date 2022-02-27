@@ -1,24 +1,29 @@
 logging:
     level:
-        root: ${OPPTYGO_LOG_LEVEL:INFO}
+        root: ${federate.log.level:INFO}
         org.springframework: ERROR
-
-region: ${OPPTYGO_REGION}
-env: ${OPPTYGO_ENV}
+region: ${federate.region}
+env: ${federate.env}
+issuer: ${federate.org}
+keystore:
+    path: ${federate.keystore.path}
+    storePwd: ${federate.store.password}
+    keyPwd: ${federate.key.password}
+    awsProp: ${federate.aws.prop}
 roles:
     dev:
-        roleArn: ${OPPTYGO_ENV}.dev.rolearn
-        accountId: ${OPPTYGO_ENV}.dev.accountid
-        token: ${OPPTYGO_ENV}.dev.token
-        appClientId: ${OPPTYGO_ENV}.dev.appclientid
-        userPoolId: ${OPPTYGO_ENV}.dev.userpoolid
-        identityPoolId: ${OPPTYGO_ENV}.dev.identitypoolid
+        roleArn: ${federate.env}.dev.rolearn
+        accountId: ${federate.env}.dev.accountid
+        token: ${federate.env}.dev.token
+        appClientId: ${federate.env}.dev.appclientid
+        userPoolId: ${federate.env}.dev.userpoolid
+        identityPoolId: ${federate.env}.dev.identitypoolid
     admin:
-        roleArn: ${OPPTYGO_ENV}.admin.rolearn
-        accountId: ${OPPTYGO_ENV}.admin.accountid
-        token: ${OPPTYGO_ENV}.admin.token
-        appClientId: ${OPPTYGO_ENV}.admin.appclientid
-        userPoolId: ${OPPTYGO_ENV}.admin.userpoolid
-        identityPoolId: ${OPPTYGO_ENV}.admin.identitypoolid
+        roleArn: ${federate.env}.admin.rolearn
+        accountId: ${federate.env}.admin.accountid
+        token: ${federate.env}.admin.token
+        appClientId: ${federate.env}.admin.appclientid
+        userPoolId: ${federate.env}.admin.userpoolid
+        identityPoolId: ${federate.env}.admin.identitypoolid
 
 

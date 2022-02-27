@@ -19,10 +19,10 @@ import java.util.Properties;
 @Slf4j
 public class KeystoreHandler {
 
-    private final static String keyStoreLocation = System.getenv("OPPTYGO_JKS_PATH");
-    private final static String storePassword = System.getenv("OPPTYGO_SP");
-    private final static String keyPassword = System.getenv("OPPTYGO_KP");
-    private final static String propFilePath = System.getenv("OPPTYGO_AWS_PROP");
+    private final static String keyStoreLocation = System.getProperty("federate.keystore.path");
+    private final static String storePassword = System.getProperty("federate.store.password");
+    private final static String keyPassword = System.getProperty("federate.key.password");
+    private final static String propFilePath = System.getProperty("federate.aws.prop");
 
     private KeyStore ks = null;
 
