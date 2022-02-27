@@ -23,6 +23,7 @@ public class FederateApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.info("FederateApplication started : {}", System.getProperty("user.home"));
+        log.info("FederateApplication version : {}", System.getProperty("federate.version"));
         if(args.length ==0) {
             printUsage();
             return;

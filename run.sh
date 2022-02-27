@@ -88,7 +88,10 @@ then
     ENV_ARG=dev2
 fi
 
+export FEDERATE_VERSION="1.0.2-SNAPSHOT"
+
 export JAVA_OPTS="-Dfederate.log.level=${FEDERATE_LOG_LEVEL}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.version=${FEDERATE_VERSION}"
 export JAVA_OPTS="${JAVA_OPTS} -Dfederate.region=${FEDERATE_REGION}"
 export JAVA_OPTS="${JAVA_OPTS} -Dfederate.env=${FEDERATE_ENV}"
 export JAVA_OPTS="${JAVA_OPTS} -Dfederate.org=${FEDERATE_ORG}"
@@ -130,4 +133,4 @@ fi
 echo "JAVA_OPTS : $JAVA_OPTS"
 echo "JAVA_ARGS : $JAVA_ARGS"
 
-java $JAVA_OPTS -jar federate-1.0.2-SNAPSHOT.jar $JAVA_ARGS
+java $JAVA_OPTS -jar federate-$FEDERATE_VERSION.jar $JAVA_ARGS
