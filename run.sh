@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ./setup.sh
+
 function show_usage (){
     printf "Usage: $0 [options [parameters]]\n"
     printf "\n"
@@ -11,7 +13,7 @@ function show_usage (){
     printf " -r|--role, Valid roles (dev, admin) [Optional, Default is dev]\n"
     printf " -t|--time, Session expiration time in hours [Optional, Default is 4 hrs]\n"
     printf " -f|--file, Csvfile for import/delete action [ Optional]\n"
-	printf " -np|--newpwd, New password [ Optional]\n"
+	  printf " -np|--newpwd, New password [ Optional]\n"
     printf " -h|--help, Print help \n"
 
 return 0
@@ -86,7 +88,14 @@ then
     ENV_ARG=dev2
 fi
 
-export JAVA_OPTS="-DOPPTYGO_ENV=${ENV_ARG}"
+export JAVA_OPTS="-Dfederate.log.level=${FEDERATE_LOG_LEVEL}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.region=${FEDERATE_REGION}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.env=${FEDERATE_ENV}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.org=${FEDERATE_ORG}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.keystore.path=${FEDERATE_JKS_PATH}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.store.password=${FEDERATE_STORE_PWD}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.key.password=${FEDERATE_KEY_PWD}"
+export JAVA_OPTS="${JAVA_OPTS} -Dfederate.aws.prop=${FEDERATE_AWS_PROP}"
 
 export JAVA_ARGS="uname=${USERNAME_ARG} pwd=${PASSWORD_ARG}"
 
@@ -118,5 +127,7 @@ then
     export JAVA_ARGS="${JAVA_ARGS} newpwd=${NEWPWD_ARG}"
 fi
 
+echo "JAVA_OPTS : $JAVA_OPTS"
+echo "JAVA_ARGS : $JAVA_ARGS"
 
-java $JAVA_OPTS -jar federate-0.0.1-SNAPSHOT.jar $JAVA_ARGS
+java $JAVA_OPTS -jar federate-1.0.2-SNAPSHOT.jar $JAVA_ARGS

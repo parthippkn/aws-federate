@@ -4,8 +4,8 @@ plugins {
 	id 'java'
 }
 
-group = 'com.opptygo.federate'
-version = '0.0.1-SNAPSHOT'
+group = 'com.ppkn.federate'
+version = '1.0.2-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
