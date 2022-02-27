@@ -1,7 +1,6 @@
 HELP.md
 .gradle
 build/
-gradle/
 customers/opptygo/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
