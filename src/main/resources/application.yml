@@ -1,0 +1,24 @@
+logging:
+    level:
+        root: ${OPPTYGO_LOG_LEVEL:INFO}
+        org.springframework: ERROR
+
+region: ${OPPTYGO_REGION}
+env: ${OPPTYGO_ENV}
+roles:
+    dev:
+        roleArn: ${OPPTYGO_ENV}.dev.rolearn
+        accountId: ${OPPTYGO_ENV}.dev.accountid
+        token: ${OPPTYGO_ENV}.dev.token
+        appClientId: ${OPPTYGO_ENV}.dev.appclientid
+        userPoolId: ${OPPTYGO_ENV}.dev.userpoolid
+        identityPoolId: ${OPPTYGO_ENV}.dev.identitypoolid
+    admin:
+        roleArn: ${OPPTYGO_ENV}.admin.rolearn
+        accountId: ${OPPTYGO_ENV}.admin.accountid
+        token: ${OPPTYGO_ENV}.admin.token
+        appClientId: ${OPPTYGO_ENV}.admin.appclientid
+        userPoolId: ${OPPTYGO_ENV}.admin.userpoolid
+        identityPoolId: ${OPPTYGO_ENV}.admin.identitypoolid
+
+

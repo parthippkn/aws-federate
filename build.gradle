@@ -1,0 +1,40 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.opptygo.federate'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'com.amazonaws:aws-java-sdk:1.12.1'
+    implementation 'com.amazonaws:aws-java-sdk-core:1.12.1'
+    implementation 'com.amazonaws:aws-java-sdk-cognitoidp:1.12.1'
+    implementation 'com.amazonaws:aws-java-sdk-sts:1.12.1'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.9'
+    implementation 'org.passay:passay:1.6.0'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+
+
+
