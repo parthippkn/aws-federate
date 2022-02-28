@@ -44,7 +44,7 @@ public class MfaSetupCommandService implements CommandService {
 
         AssociateSoftwareTokenResult tokenResult =  cognitoClient.associateSoftwareToken(tokenRequest);
         String qrCodeUrl = QRCODE_TEMPLATE_URL.replaceAll("secretKey", tokenResult.getSecretCode());
-        qrCodeUrl = QRCODE_TEMPLATE_URL.replaceAll("orgIssuer", federateConfig.getIssuer());
+        qrCodeUrl = qrCodeUrl.replaceAll("orgIssuer", federateConfig.getIssuer());
         qrCodeUrl = qrCodeUrl.replaceAll("uName", federateConfig.getArgsResolverConfig().getUserName());
         qrCodeUrl = qrCodeUrl.replaceAll("role", federateConfig.getArgsResolverConfig().getRoleName());
         log.info("Click this QRCODE in the browser   : \n {}\n", qrCodeUrl);
