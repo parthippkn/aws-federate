@@ -76,8 +76,8 @@ public class KeystoreHandler {
     public static void main(String[] args) throws Exception {
         KeystoreHandler keystoreHandler = new KeystoreHandler();
         keystoreHandler.loadKeystore();
+        keystoreHandler.deleteEntries();
         keystoreHandler.createEntries();
-        //keystoreHandler.deleteEntries();
     }
 
     private void deleteEntry(String entry)
