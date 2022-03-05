@@ -39,7 +39,7 @@ public class KeystoreHandler {
             ks.load(new FileInputStream(keyStoreLocation), storePassword.toCharArray());
             log.info("Successfully loaded keystore..");
         }catch (Exception e) {
-            throw new RuntimeException("Unable to load keystore. Please check keystore location set in environment variable ");
+            throw new RuntimeException("Unable to load keystore. Please check keystore location set in environment variable ", e);
         }
     }
 
@@ -77,6 +77,7 @@ public class KeystoreHandler {
         KeystoreHandler keystoreHandler = new KeystoreHandler();
         keystoreHandler.loadKeystore();
         keystoreHandler.createEntries();
+        //keystoreHandler.deleteEntries();
     }
 
     private void deleteEntry(String entry)
