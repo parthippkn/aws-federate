@@ -8,6 +8,7 @@ customers/opptygo/
 *.zip
 *.jar
 *.class
+customers/cmdfw/cmdfw.aws.properties
 
 ### STS ###
 .apt_generated
